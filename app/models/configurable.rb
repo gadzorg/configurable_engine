@@ -9,7 +9,7 @@ class Configurable < ActiveRecord::Base
   before_save :serialize_value
 
   def self.defaults
-    @defaults ||= HashWithIndifferentAccess.new(
+    @defaults ||= ActiveSupport::HashWithIndifferentAccess.new(
       YAML.load_file(
         Rails.root.join('config', 'configurable.yml')
       )
